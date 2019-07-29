@@ -60,7 +60,7 @@
         <h3 class="panel-title">注册</h3>
     </div>
     <div class="panel-body">
-        <form action="/user/add/do" method="post" id="signupForm" class="form-horizontal" role="form" style="margin-left: 5%">
+        <form action="${ctx }/user/add/do" method="post" id="signupForm" class="form-horizontal" role="form" style="margin-left: 5%">
             <div class="form-group" >
                 <label class="col-sm-2 control-label">用户名</label>
                 <div class="col-sm-10" style="width: 40%;">

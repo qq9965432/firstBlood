@@ -21,7 +21,7 @@ import org.springframework.stereotype.Component;
 public class LogAspect {
      private final Log log = LogFactory.getLog(getClass());
 
-    @Before("execution(* com.wist_bean.controller.UserController.signin(..))")
+    @Before("execution(* com.wist_bean.user.web.UserController.signin(..))")
     public void loginLogAspect(JoinPoint joinPoint){
         String methodName=joinPoint.getSignature().toShortString();
         String args=joinPoint.getArgs().toString();

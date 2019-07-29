@@ -1,4 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ include file="/webpage/include/taglib.jsp"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -6,9 +6,9 @@
     <meta name="Content-Type"  content="text/html;charset=utf-8">
     <meta name="keywords" content="Kidding,论坛,社区,程序员">
     <title>Kidding - 一个分享创造的开发者社区  </title>
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <script src="/js/jquery-3.2.1.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
+    <link href="${ctxStatic}/css/bootstrap.min.css" rel="stylesheet">
+    <script src="${ctxStatic}/js/jquery-3.2.1.js"></script>
+    <script src="${ctxStatic}/js/bootstrap.min.js"></script>
     <style>
         li {list-style-type:none;}
         html, body {
@@ -64,13 +64,13 @@
     <li class="list-group-item">
         <div style="height: 50px">
             <div style="float: left;width: 6%;margin-bottom: 5px">
-                <img width="50px" height="50px" src="${topic.user.avatar}" class="img-rounded">
+                <img width="50px" height="50px" src="${ctxStatic}/${topic.user.avatar}" class="img-rounded">
             </div>
             <div style="width: 89%;float: left">
-                <a href="/t/${topic.id}">${topic.title}</a><br/>
+                <a href="${ctx}/t/${topic.id}">${topic.title}</a><br/>
                 <div>
                     <a><span class="label label-default" >${topic.tab.tabName}</span></a>&nbsp;&nbsp;&nbsp;
-                    <a href="/member/${topic.user.username}"><span ><strong>${topic.user.username}</strong></span></a>&nbsp;&nbsp;&nbsp;
+                    <a href="${ctx}/member/${topic.user.username}"><span ><strong>${topic.user.username}</strong></span></a>&nbsp;&nbsp;&nbsp;
                     <small class="text-muted">${topic.localCreateTime}</small>
                 </div>
             </div>

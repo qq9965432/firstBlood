@@ -1,4 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ include file="/webpage/include/taglib.jsp"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -62,16 +62,16 @@ a{
     <div class="info">
         <p style="text-align: center;font-size: 16px;">友情链接</p>
         <ul >
-            <li><a href="/">Github</a></li>
-            <li><a href="/">Segmentfault</a></li>
-            <li><a href="/">v2ex</a></li>
+            <li><a href="${ctx}/">Github</a></li>
+            <li><a href="${ctx}/">Segmentfault</a></li>
+            <li><a href="${ctx}/">v2ex</a></li>
         </ul>
     </div>
     <div class="info" >
         <p style="text-align: center;font-size: 16px;">其他信息</p>
         <ul >
-            <li><a href="/">关于本站</a></li>
-            <li><a href="/">联系我们</a></li>
+            <li><a href="${ctx}/">关于本站</a></li>
+            <li><a href="${ctx}/">联系我们</a></li>
         </ul>
     </div>
 </footer>

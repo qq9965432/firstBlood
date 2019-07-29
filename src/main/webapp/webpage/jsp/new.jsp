@@ -1,12 +1,12 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ include file="/webpage/include/taglib.jsp"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <script src="/js/jquery-3.2.1.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
+    <link href="${ctxStatic}/css/bootstrap.min.css" rel="stylesheet">
+    <script src="${ctxStatic}/js/jquery-3.2.1.js"></script>
+    <script src="${ctxStatic}/js/bootstrap.min.js"></script>
     <title>创作新主题 › Kidding </title>
 </head>
 <body>
@@ -16,11 +16,11 @@
     <div style="width: 70%;margin:1% 2% 1% 5%;float: left;">
     <div class="panel panel-default" id="main" style="">
         <div class="panel-heading" style="background-color: white">
-            <a href="/">Kidding</a> › 创作新主题
+            <a href="${ctx}/">Kidding</a> › 创作新主题
         </div>
 
         <div class="panel-body">
-            <form action="/topic/add" method="post" id="replyForm">
+            <form action="${ctx}/topic/add" method="post" id="replyForm">
                 <div class="form-group">
                     <label for="title">主题标题</label>
                     <input type="text" class="form-control" id="title" name="title" placeholder="请输入主题标题，如果标题能够表达完整内容，则正文可以为空" required="required">

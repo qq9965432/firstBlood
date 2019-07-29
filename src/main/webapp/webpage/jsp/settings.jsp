@@ -1,12 +1,12 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ include file="/webpage/include/taglib.jsp"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <script src="/js/jquery-3.2.1.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
+    <link href="${ctxStatic}/css/bootstrap.min.css" rel="stylesheet">
+    <script src="${ctxStatic}/js/jquery-3.2.1.js"></script>
+    <script src="${ctxStatic}/js/bootstrap.min.js"></script>
     <title>Kidding ›设置</title>
 </head>
 <body>
@@ -16,15 +16,15 @@
 <div style="width: 70%;margin:1% 2% 1% 5%;float: left;">
     <div class="panel panel-default" id="main" style="">
         <div class="panel-heading" style="background-color: white">
-            <a href="/">Kidding</a> › 设置
+            <a href="${ctx }/">Kidding</a> › 设置
         </div>
 
         <div class="panel-body">
 
                 <form class="form-horizontal" role="form" >
                     <div style="margin-left: 17%">
-                        <img width="60px" height="60px" src="${user.avatar}" class="img-rounded">
-                        <a class="btn btn-default" href="/settings/avatar" role="button">更换头像</a>
+                        <img width="60px" height="60px" src="${ctxStatic}/${user.avatar}" class="img-rounded">
+                        <a class="btn btn-default" href="${ctx}/settings/avatar" role="button">更换头像</a>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label">uid</label>

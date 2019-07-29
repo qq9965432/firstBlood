@@ -132,7 +132,7 @@
         else {
             $.ajax({
                 type: "POST",
-                url: "/api/loginCheck",
+                url: "${ctx}/api/loginCheck",
                 data: {
                     username:id ,
                     password: passwd
@@ -150,7 +150,7 @@
                             Cookies.remove('loginStatus');
                         }
                         $("#info").text("提示:登陆成功，跳转中...");
-                        window.location.href="/";
+                        window.location.href="${ctx}/";
                     }
                 }
             });

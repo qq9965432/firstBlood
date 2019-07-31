@@ -10,6 +10,7 @@ import com.wist_bean.util.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -35,9 +36,15 @@ public class MainController {
      * 进入登录页面.
      */
     @RequestMapping(value = {"/signin"})
-    public String signin(){
-        String principal = (String)SecurityUtils.getSubject().getPrincipal();
-        if(StringUtils.isBlank(principal)) {
+    public String signin(Model model){
+        boolean isLogin = SecurityUtils.getSubject().isAuthenticated();
+        if(!isLogin) {
+        	SecurityUtils.getSubject().logout();
+        	 //获取统计信息
+            int topicsNum=topicService.getTopicsNum();
+            int usersNum=userService.getUserCount();
+            model.addAttribute("topicsNum", topicsNum);
+            model.addAttribute("usersNum", usersNum);
         	return "jsp/signin";
         }else {
         	return "redirect:/";
@@ -48,16 +55,19 @@ public class MainController {
      * 进入注册页面.
      */
     @RequestMapping("/signup")
-    public ModelAndView signup(){
-        ModelAndView signupPage=new ModelAndView("jsp/signup");
-
-        //获取统计信息
-        int topicsNum=topicService.getTopicsNum();
-        int usersNum=userService.getUserCount();
-
-        signupPage.addObject("topicsNum",topicsNum);
-        signupPage.addObject("usersNum",usersNum);
-        return  signupPage;
+    public String signup(Model model){
+        boolean isLogin = SecurityUtils.getSubject().isAuthenticated();
+        if(!isLogin) {
+        	SecurityUtils.getSubject().logout();
+        	 //获取统计信息
+            int topicsNum=topicService.getTopicsNum();
+            int usersNum=userService.getUserCount();
+            model.addAttribute("topicsNum", topicsNum);
+            model.addAttribute("usersNum", usersNum);
+            return "jsp/signup";
+        }else {
+        	return "redirect:/";
+        }
     }
 
     /**

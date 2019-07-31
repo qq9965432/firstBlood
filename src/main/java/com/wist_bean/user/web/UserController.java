@@ -9,6 +9,10 @@ import com.wist_bean.user.service.impl.UserServiceImpl;
 import com.wist_bean.util.ProduceMD5;
 
 import eu.bitwalker.useragentutils.UserAgent;
+
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -84,41 +88,53 @@ public class UserController {
         //处理参数
         String password=ProduceMD5.getMD5(request.getParameter("password"));
         String username=request.getParameter("username");
-        //验证用户名密码
-        int loginVerify=userService.login(username,password);
-
+        String remember=request.getParameter("remember");
         HashMap<String, String> res = new HashMap<String, String>();
-
-        //登录成功
-        if(loginVerify == 2){
-            User user =userService.getUserByUsername(username);
-            Integer userId=user.getId();
-            //添加积分
-            boolean ifSuccAddCredit=userService.addCredit(1,userId);
-            //用户信息写入session
-            session.setAttribute("userId",userId);
-            session.setAttribute("username",username);
-            //获取登录信息
-            String ip=getRemortIP(request);
-            UserAgent userAgent = UserAgent.parseUserAgentString(request.getHeader("User-Agent"));
-            //获取用户的浏览器名
-            String userbrowser = userAgent.getBrowser().toString();
-            //写入登录日志
-            LoginLog log=new LoginLog();
-            log.setDevice(userbrowser);
-            log.setIp(ip);
-            log.setUserId(userId);
-            log.setLoginTime(new Date());
-            boolean ifSuccAddLog=loginLogService.addLog(log);
-
-            res.put("stateCode", "2");
-        }
-        //密码错误
-        else if (loginVerify == 1){
-            res.put("stateCode", "1");
-        }
-        //用户名不存在
-        else {
+        String error = null;
+        if (username != null && password != null) {
+            //初始化
+            Subject subject = SecurityUtils.getSubject();
+            UsernamePasswordToken token = new UsernamePasswordToken(username, password);
+            if (remember != null){
+                if (remember.equals("on")) {
+                    //说明选择了记住我
+                    token.setRememberMe(true);
+                } else {
+                    token.setRememberMe(false);
+                }
+            }else{
+                token.setRememberMe(false);
+            }
+            try {
+                //登录，即身份校验，由通过Spring注入的UserRealm会自动校验输入的用户名和密码在数据库中是否有对应的值
+                subject.login(token);
+                User user =userService.getUserByUsername(username);
+                Integer userId=user.getId();
+                //添加积分
+                boolean ifSuccAddCredit=userService.addCredit(1,userId);
+                //用户信息写入session
+                session.setAttribute("userId",userId);
+                session.setAttribute("username",username);
+                //获取登录信息
+                String ip=getRemortIP(request);
+                UserAgent userAgent = UserAgent.parseUserAgentString(request.getHeader("User-Agent"));
+                //获取用户的浏览器名
+                String userbrowser = userAgent.getBrowser().toString();
+                //写入登录日志
+                LoginLog log=new LoginLog();
+                log.setDevice(userbrowser);
+                log.setIp(ip);
+                log.setUserId(userId);
+                log.setLoginTime(new Date());
+                boolean ifSuccAddLog=loginLogService.addLog(log);
+                res.put("stateCode", "2");
+            }catch (Exception e){
+                e.printStackTrace();
+                error = "未知错误，错误信息：" + e.getMessage();
+                res.put("stateCode", "1");
+            }
+        } else {
+            error = "请输入用户名和密码";
             res.put("stateCode", "0");
         }
         return res;

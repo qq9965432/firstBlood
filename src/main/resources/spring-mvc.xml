@@ -49,22 +49,7 @@
         <property name="ignoreAcceptHeader" value="true"/>
         <property name="favorPathExtension" value="true"/>
 	</bean>
-	
-	<!-- <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
-        <property name="contentNegotiationManager" ref="contentNegotiationManager" />
-        <property name="viewResolvers">
-            <list>
-                <ref bean="velocityViewResolver"/>
-            </list>
-        </property>
-        <property name="defaultViews">
-            <list>
-                for application/json
-                <bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"/>
-            </list>
-        </property>
-    </bean> -->
-	
+
 	<!-- 定义视图文件解析 -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="${web.view.prefix}"/>

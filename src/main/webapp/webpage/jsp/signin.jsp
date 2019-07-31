@@ -119,7 +119,11 @@
     $("#loginButton").click(function () {
         var id =$("#username").val();
         var passwd=$("#passwd").val();
-        var remember=$("#remember").prop('checked');
+        var r=$("#remember").prop('checked');
+        var remember='off';
+        if(r){
+        	remember='on';
+        }
         if( id=='' && passwd==''){
             $("#info").text("提示:账号和密码不能为空");
         }
@@ -135,7 +139,8 @@
                 url: "${ctx}/api/loginCheck",
                 data: {
                     username:id ,
-                    password: passwd
+                    password: passwd,
+                    remember: remember
                 },
                 dataType: "json",
                 success: function(data) {

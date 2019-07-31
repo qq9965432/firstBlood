@@ -55,5 +55,8 @@
         <!-- 给出需要扫描Dao接口包 -->
         <property name="basePackage" value="com.wist_bean" />
     </bean>
-    
+    <!-- 缓存配置 -->
+	<bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+		<property name="configLocation" value="classpath:${ehcache.configFile}" />
+	</bean>
 </beans>

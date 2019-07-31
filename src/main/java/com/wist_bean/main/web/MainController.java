@@ -5,7 +5,9 @@ import com.wist_bean.main.service.impl.ReplyServiceImpl;
 import com.wist_bean.main.service.impl.TabServiceImpl;
 import com.wist_bean.main.service.impl.TopicServiceImpl;
 import com.wist_bean.user.service.impl.UserServiceImpl;
+import com.wist_bean.util.StringUtils;
 
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,16 +35,13 @@ public class MainController {
      * 进入登录页面.
      */
     @RequestMapping(value = {"/signin"})
-    public ModelAndView signin(){
-        ModelAndView signinPage=new ModelAndView("jsp/signin");
-
-        //获取统计信息
-        int topicsNum=topicService.getTopicsNum();
-        int usersNum=userService.getUserCount();
-
-        signinPage.addObject("topicsNum",topicsNum);
-        signinPage.addObject("usersNum",usersNum);
-        return  signinPage;
+    public String signin(){
+        String principal = (String)SecurityUtils.getSubject().getPrincipal();
+        if(StringUtils.isBlank(principal)) {
+        	return "jsp/signin";
+        }else {
+        	return "redirect:/";
+        }
     }
 
     /**

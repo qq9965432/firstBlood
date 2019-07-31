@@ -28,7 +28,7 @@
         </div>
 
         <div style="float: right;margin-top: -100px" >
-            <img width="50px" height="50px" src="${topic.user.avatar}" class="img-rounded">
+            <img width="50px" height="50px" src="${ctxStatic}${topic.user.avatar}" class="img-rounded">
         </div>
     </div>
 

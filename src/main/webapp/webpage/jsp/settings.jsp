@@ -23,7 +23,7 @@
 
                 <form class="form-horizontal" role="form" >
                     <div style="margin-left: 17%">
-                        <img width="60px" height="60px" src="${ctxStatic}/${user.avatar}" class="img-rounded">
+                        <img width="60px" height="60px" src="${ctxStatic}${user.avatar}" class="img-rounded">
                         <a class="btn btn-default" href="${ctx}/settings/avatar" role="button">更换头像</a>
                     </div>
                     <div class="form-group">

@@ -51,7 +51,7 @@ public class TopicController {
      */
     @RequestMapping("/")
     public ModelAndView toMain(HttpSession session){
-        ModelAndView indexPage=new ModelAndView("jsp/cate");
+        ModelAndView indexPage=new ModelAndView("topic/cate");
         //全部主题
         List<Topic> topics=topicService.listTopicsAndUsers();
 
@@ -98,7 +98,7 @@ public class TopicController {
         List<Topic> hotestTopics=topicService.listMostCommentsTopics();
 
         //渲染视图
-        ModelAndView topicPage=new ModelAndView("jsp/detail");
+        ModelAndView topicPage=new ModelAndView("topic/detail");
         topicPage.addObject("topic",topic);
         topicPage.addObject("replies",replies);
         topicPage.addObject("repliesNum",repliesNum);
@@ -117,7 +117,7 @@ public class TopicController {
         Tab tab=tabService.getByTabNameEn(tabNameEn);
         Integer tabId=tab.getId();
 
-        ModelAndView indexPage=new ModelAndView("jsp/cate");
+        ModelAndView indexPage=new ModelAndView("topic/cate");
         //全部主题
         List<Topic> topics=topicService.listTopicsAndUsersOfTab(tabId);
 

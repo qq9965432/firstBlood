@@ -11,7 +11,7 @@
 </head>
 <body>
 <!-- 引入header文件 -->
-<%@ include file="header.jsp"%>
+<%@ include file="/webpage/include/header.jsp"%>
 
     <div style="width: 70%;margin:1% 2% 1% 5%;float: left;">
     <div class="panel panel-default" id="main" style="">
@@ -97,7 +97,7 @@
 
 
 <!-- 引入footer文件 -->
-<%@ include file="footer.jsp"%>
+<%@ include file="/webpage/include/footer.jsp"%>
 
 <script>
     function submitValidate(flag){

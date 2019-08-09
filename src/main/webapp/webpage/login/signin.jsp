@@ -53,7 +53,7 @@
 </head>
 <body>
 <!-- 引入header文件 -->
-<%@ include file="header.jsp"%>
+<%@ include file="/webpage/include/header.jsp"%>
 
 <div class="panel panel-default" id="login" style="width: 20%;margin-left: 40%;margin-top: 5%;margin-bottom: 5%">
     <div class="panel-heading" style="background-color: #fff">
@@ -153,9 +153,11 @@
                             rememberLogin(id,passwd,remember);
                         }else {
                             Cookies.remove('loginStatus');
+                            
                         }
                         $("#info").text("提示:登陆成功，跳转中...");
-                        window.location.href="${ctx}/";
+                        window.location.href=document.referrer;
+                        //window.location.href="${ctx}/";
                     }
                 }
             });
@@ -163,6 +165,6 @@
     })
 </script>
 <!-- 引入footer文件 -->
-<%@ include file="footer.jsp"%>
+<%@ include file="/webpage/include/footer.jsp"%>
 </body>
 </html>

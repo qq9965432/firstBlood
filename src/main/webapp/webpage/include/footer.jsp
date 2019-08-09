@@ -50,7 +50,7 @@ a{
     <div class="container">
         我们是高品质的开发者社区，致力于为开发者提供一个分享创造、结识伙伴、协同互助的平台。
         <br/><br/><br/>
-        <p>Designed by </span> wist_bean</p>
+        <p>Designed by wist_bean | <a href="http://www.beian.miit.gov.cn/">粤ICP备19090644号</a></p>
     </div>
     <div class="info">
         <p style="text-align: center;font-size: 16px;">统计信息</p>

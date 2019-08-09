@@ -53,7 +53,7 @@
 
 
 <!-- 引入header文件 -->
-<%@ include file="header.jsp"%>
+<%@ include file="/webpage/include/header.jsp"%>
 
 <div class="panel panel-default" id="login" style="width: 55%;margin-left: 10%;margin-top: 5%;margin-bottom: 5%">
     <div class="panel-heading" style="background-color: #fff">
@@ -103,7 +103,7 @@
     </div>
 </div>
 <!-- 引入footer文件 -->
-<%@ include file="footer.jsp"%>
+<%@ include file="/webpage/include/footer.jsp"%>
 
 <script>
     function submitValidate(flag){

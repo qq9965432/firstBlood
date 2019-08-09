@@ -178,7 +178,7 @@ public class UserController {
         //最热主题
         List<Topic> hotestTopics=topicService.listMostCommentsTopics();
 
-        ModelAndView mv=new ModelAndView("jsp/user_info");
+        ModelAndView mv=new ModelAndView("user/user_info");
         mv.addObject("hotestTopics",hotestTopics);
         if (ifExistUser){
             User resultUser=userService.getUserByUsername(username);
@@ -203,7 +203,7 @@ public class UserController {
         //最热主题
         List<Topic> hotestTopics=topicService.listMostCommentsTopics();
 
-        ModelAndView mv=new ModelAndView("jsp/settings");
+        ModelAndView mv=new ModelAndView("user/settings");
         mv.addObject("user",user);
         mv.addObject("hotestTopics",hotestTopics);
         return mv;
@@ -218,7 +218,7 @@ public class UserController {
         //最热主题
         List<Topic> hotestTopics=topicService.listMostCommentsTopics();
 
-        ModelAndView mv=new ModelAndView("jsp/update_avatar");
+        ModelAndView mv=new ModelAndView("user/update_avatar");
         mv.addObject("user",user);
         mv.addObject("hotestTopics",hotestTopics);
         return mv;
@@ -255,7 +255,7 @@ public class UserController {
         //最热主题
         List<Topic> hotestTopics=topicService.listMostCommentsTopics();
 
-        ModelAndView mv=new ModelAndView("jsp/update_avatar");
+        ModelAndView mv=new ModelAndView("user/update_avatar");
         mv.addObject("user",user);
 
         mv.addObject("hotestTopics",hotestTopics);

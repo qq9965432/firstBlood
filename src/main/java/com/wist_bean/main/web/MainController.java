@@ -45,7 +45,7 @@ public class MainController {
             int usersNum=userService.getUserCount();
             model.addAttribute("topicsNum", topicsNum);
             model.addAttribute("usersNum", usersNum);
-        	return "jsp/signin";
+        	return "login/signin";
         }else {
         	return "redirect:/";
         }
@@ -64,7 +64,7 @@ public class MainController {
             int usersNum=userService.getUserCount();
             model.addAttribute("topicsNum", topicsNum);
             model.addAttribute("usersNum", usersNum);
-            return "jsp/signup";
+            return "login/signup";
         }else {
         	return "redirect:/";
         }
@@ -75,7 +75,7 @@ public class MainController {
      */
     @RequestMapping(value = {"/new"})
     public ModelAndView newTopic(){
-        ModelAndView newTopicPage=new ModelAndView("jsp/new");
+        ModelAndView newTopicPage=new ModelAndView("main/new");
         List<Tab> tabs=tabService.getAllTabs();
 
         //获取统计信息
@@ -93,6 +93,6 @@ public class MainController {
      */
     @RequestMapping("*")
     public String notFind(){
-        return "jsp/404";
+        return "error/404";
     }
 }

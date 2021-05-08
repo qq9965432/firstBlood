@@ -20,7 +20,7 @@
 		<commons-beanutils.version>1.9.1</commons-beanutils.version>
         <hibernate.validator.version>5.0.2.Final</hibernate.validator.version>
         <jetty.version>8.1.8.v20121106</jetty.version>
-        <shiro.version>1.2.3</shiro.version>
+        <shiro.version>1.6.0</shiro.version>
         <commons-lang3.version>3.3.2</commons-lang3.version>
         <testng.version>6.8.7</testng.version>
         <guava.version>17.0</guava.version>
